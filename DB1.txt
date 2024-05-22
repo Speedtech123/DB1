@@ -1,0 +1,31 @@
+D1
+
+create table branch
+(branchid int primary key,
+bname varchar(10),
+hod varchar(10));
+
+create table student
+(usn varchar(10) primary key,
+name varchar(10),
+addr varchar(15),
+branchid int references branch(branchid),
+sem int);
+ 
+create table author
+(authorid int primary key,
+aname varchar(10),
+country varchar(10),
+age int);
+
+create table book
+(bookid int primary key,
+bname varchar(10),
+authorid int references author(authorid),
+publisher varchar(10),
+branchid int references branch(branchid));
+
+create table borrow
+(usn varchar(10) references student(usn),
+bookid int references book(bookid),
+borrowdate date);
